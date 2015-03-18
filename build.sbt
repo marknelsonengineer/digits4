@@ -1,4 +1,4 @@
-name := """clean-play-java2"""
+name := """digits4"""
 
 version := "1.0-SNAPSHOT"
 

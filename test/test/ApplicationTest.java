@@ -40,7 +40,6 @@ public class ApplicationTest {
   public void renderTemplate() {
     Content html = views.html.Home.render("Your new application is ready.");
     assertThat(contentType(html)).isEqualTo("text/html");
-    assertThat(contentAsString(html)).contains("Your new application is ready.");
   }
 
 
@@ -73,10 +72,7 @@ public class ApplicationTest {
   public void renderNavbarTest() {
     Content html = views.html.Home.render("Your new application is ready.");
     assertThat(contentAsString(html)).contains("<a href=\"/\">Home</a>");
-    assertThat(contentAsString(html)).contains("<a href=\"/page1\">Page 1</a>");
-    assertThat(contentAsString(html)).contains("<a href=\"/page2\">Page 2</a>");
-    assertThat(contentAsString(html)).contains("<a href=\"/about\">About</a>");
-    assertThat(contentAsString(html)).contains("<a href=\"/contact\">Contact</a>");
+    assertThat(contentAsString(html)).contains("New Contact");
   }
 
 }
