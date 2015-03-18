@@ -9,6 +9,7 @@
 
 package test;
 
+import models.ContactDB;
 import org.junit.Test;
 import play.twirl.api.Content;
 
@@ -38,7 +39,7 @@ public class ApplicationTest {
    */
   @Test
   public void renderTemplate() {
-    Content html = views.html.Home.render("Your new application is ready.");
+    Content html = views.html.Home.render("Your new application is ready.", ContactDB.getContacts());
     assertThat(contentType(html)).isEqualTo("text/html");
   }
 
@@ -48,7 +49,7 @@ public class ApplicationTest {
    */
   @Test
   public void renderBootstrapTest() {
-    Content html = views.html.Home.render("Your new application is ready.");
+    Content html = views.html.Home.render("Your new application is ready.", ContactDB.getContacts());
     assertThat(contentAsString(html)).contains("bootstrap.min.css");  // To Do: Make sure the URL targets are good.
     assertThat(contentAsString(html)).contains("jquery.min.js");
     assertThat(contentAsString(html)).contains("bootstrap.min.js");
@@ -60,7 +61,7 @@ public class ApplicationTest {
    */
   @Test
   public void renderGoogleFontsTest() {
-    Content html = views.html.Home.render("Your new application is ready.");
+    Content html = views.html.Home.render("Your new application is ready.", ContactDB.getContacts());
     assertThat(contentAsString(html)).contains("fonts.googleapis.com");  // To Do: Make sure the URL targets are good.
   }
 
@@ -70,7 +71,7 @@ public class ApplicationTest {
    */
   @Test
   public void renderNavbarTest() {
-    Content html = views.html.Home.render("Your new application is ready.");
+    Content html = views.html.Home.render("Your new application is ready.", ContactDB.getContacts());
     assertThat(contentAsString(html)).contains("<a href=\"/\">Home</a>");
     assertThat(contentAsString(html)).contains("New Contact");
   }

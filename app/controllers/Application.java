@@ -8,6 +8,8 @@
 
 package controllers;
 
+import models.Contact;
+import models.ContactDB;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
@@ -27,7 +29,7 @@ public class Application extends Controller {
    * @return HTTP OK with page content.
    */
   public static Result home() {
-    return ok(Home.render("Home page successful."));
+    return ok(Home.render("Home page successful.", ContactDB.getContacts()));
   }
 
 
@@ -62,6 +64,14 @@ public class Application extends Controller {
     System.out.printf("  First: [%s]", contactFormData.firstName);
     System.out.printf("  Last: [%s]", contactFormData.lastName);
     System.out.printf("  Phone: [%s]", contactFormData.phone);
+    System.out.printf("\n");
+
+    Contact contact = ContactDB.newContact(contactFormData);
+
+    System.out.printf("Data from the Contact object ::");
+    System.out.printf("  First: [%s]", contact.getFirstName());
+    System.out.printf("  Last: [%s]", contact.getLastName());
+    System.out.printf("  Phone: [%s]", contact.getPhone());
     System.out.printf("\n");
 
     return ok(NewContact.render("Contact page successful.", contactForm));
