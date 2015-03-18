@@ -43,8 +43,19 @@ public class Application extends Controller {
   }
 
 
+  /**
+   * Process new contact information.
+   *
+   * @return HTTP OK with page content.
+   */
   public static Result postNewContact() {
     Form<ContactFormData> contactForm = Form.form(ContactFormData.class).bindFromRequest();
+
+    if (contactForm.hasErrors()) {
+      System.out.printf("Error in newContact page.\n");
+      return badRequest(NewContact.render("Error in newContact page.", contactForm));
+    }
+
     ContactFormData contactFormData = contactForm.get();
 
     System.out.printf("Data from the HTML Contact Form ::");
